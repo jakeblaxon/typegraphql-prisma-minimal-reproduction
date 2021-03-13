@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "URL"
+}
+
+model note {
+  note_id   Int    @id
+  order_id  Int
+  note_type Int
+  note      String
+
+  @@unique([order_id, note_type], name: "UK.note.order_id.note_type")
+}
